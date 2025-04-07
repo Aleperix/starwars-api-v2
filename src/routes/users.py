@@ -16,7 +16,7 @@ users_router = APIRouter(prefix="/api/users", tags=["users"])
 @users_router.post("", response_model=UserOut, include_in_schema=False)
 def create_user(user: UserIn):
     hashed_pwd = get_password_hash(user.password)
-    new_user = User(username=user.username, first_name=user.first_name, last_name=user.last_name, email=user.email, password=hashed_pwd, is_active=user.is_active | False)
+    new_user = User(username=user.username, email=user.email, password=hashed_pwd, is_active=user.is_active | False)
     try:
         db.add(new_user)
         db.commit()
