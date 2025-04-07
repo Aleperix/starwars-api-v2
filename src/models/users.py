@@ -27,11 +27,7 @@ class User(Base):
         return {
             "id": self.id,
             "username": self.username,
-            "first_name": self.first_name,
-            "last_name": self.last_name,
             "email": self.email,
-            "is_active": self.is_active,
-            "avatar": self.avatar
             # do not serialize the password, its a security breach
         }
 class UserAdmin(ModelView, model=User):
